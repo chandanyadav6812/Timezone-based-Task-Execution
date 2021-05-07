@@ -2,11 +2,27 @@ import main
 from dateutil import parser
 import unittest
 
+"""
+Change Data according to your current time for testing in method: Test_case1 and Test_case2...
+
+
+Test_case1:
+    CALL U2 India 13:00:00 14:30:00
+    CALL U2 India 15:00:00 16:30:00
+    
+Test_Case2:
+    Email - U1 - India - 18:00:00 18:30:00 Tuesday and Thursday
+
+"""
+
 
 class Simple(unittest.TestCase):
-    def test_answer(self):
+
+    def test_case1(self):
         # Testing If the
         # current time is between start time and end time
+
+        # Change data according to time for testing.
         Data_List = ["CALL U2 India 13:00:00 14:30:00", "CALL U2 India 15:00:00 16:30:00",
                      "Email - U1 - India - 15:30:00 18:30:00 Tuesday and Thursday"]
         StartDay = ''
@@ -24,10 +40,12 @@ class Simple(unittest.TestCase):
             Test_Result.append(result)
         self.assertListEqual(Test_Result, [False, False, True])
 
-    def test_answer1(self):
+    def test_case2(self):
         # Testing next time when the task would
         # be picked up
         StartDay = ''
+
+        # Change data according to time for testing.
         input = "Email - U1 - India - 18:00:00 18:30:00 Tuesday and Thursday".lstrip(' ').replace('-', '')
         User_Input_List = [i for i in input.split()]
         if len(User_Input_List) == 5:
