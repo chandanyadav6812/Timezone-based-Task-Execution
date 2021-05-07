@@ -3,15 +3,6 @@ from datetime import datetime
 import pytz
 from dateutil import parser
 
-"""
-    Test Cases:
-        CALL U2 India 13:00:00 14:30:00
-        CALL U2 India 15:00:00 16:30:00
-        Email - U1 - India - 15:30:00 18:30:00 Tuesday and Thursday
-        
-    
-
-"""
 
 # Time Zone according to country...
 Country_TimeZone = {'India': 'Asia/Calcutta', 'USA': 'America/New_York', 'Aus': 'Australia/Perth'}
@@ -22,22 +13,34 @@ def Check_Task(country, starttime, endtime, startday):
         time_zone = Country_TimeZone.get(country, None)
         if time_zone:
             TimeZone = pytz.timezone(time_zone)
+
+        # get current time according timezone...
         CurrentTime = parser.parse(datetime.now(TimeZone).strftime("%H"":""%M"":""%S"))
+
+        # Check if starttime is greater then current time..
         if CurrentTime < starttime:
+
+            # StartDay is not None then return with Current time with Day...
+            # Else return Current Time...
             if startday != '':
+                # f - string formatting...
                 return f'Current datetime: {startday} {starttime.strftime("%H"":""%M"":""%S")}'
             else:
                 return f'Current time: {starttime.strftime("%H"":""%M"":""%S")}'
         else:
+
+            # Return True if current time between starttime and endtime...
             if endtime > CurrentTime > starttime:
                 return True
             else:
                 return False
+
     except Exception:
         return "Please enter valid country Name..."
 
 
 def main(user_input):
+    # Split the user input and remove '-' with ''
     User_Input = user_input.lstrip(' ').replace('-', '')
 
     # Convert the user input into list
@@ -57,6 +60,7 @@ def main(user_input):
 
         # To stop Screen
         input()
+
     except Exception:
         print('Please make sure use space between the input...')
 
