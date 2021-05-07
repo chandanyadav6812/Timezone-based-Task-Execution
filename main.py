@@ -37,32 +37,31 @@ def Check_Task(country, starttime, endtime, startday):
         return "Please enter valid country Name..."
 
 
-# For manual testing...
-# def main():
-#     while True:
-#         # Take input from user.
-#         User_Input = input().lstrip(' ').replace('-', '')
-#
-#         # Convert the user input into list
-#         User_Input_List = [i for i in User_Input.split()]
-#         StartDay = ''
-#         EndDay = ''
-#         try:
-#             if len(User_Input_List) == 5:
-#                 # Split the user input.
-#                 Task_Type, User, Country, StartTime, EndTime = User_Input_List
-#             else:
-#                 Task_Type, User, Country, StartTime, EndTime, StartDay, _, EndDay = User_Input_List
-#
-#             StartTime, EndTime = parser.parse(StartTime), parser.parse(EndTime)
-#             result = Check_Task(Country, StartTime, EndTime, StartDay)
-#             print(result)
-#             Repeat_task_or_not = input("To continue please enter or to exit type (E) and enter..")
-#             if Repeat_task_or_not == '':
-#                 continue
-#             elif Repeat_task_or_not == 'E':
-#                 break
-#             else:
-#                 print('Choose wrong option restart app..')
-#         except Exception:
-#             print('Please make sure use space between the input...')
+def main(user_input):
+    User_Input = user_input.lstrip(' ').replace('-', '')
+
+    # Convert the user input into list
+    User_Input_List = [i for i in User_Input.split()]
+    StartDay = ''
+    EndDay = ''
+    try:
+        if len(User_Input_List) == 5:
+            # Split the user input.
+            Task_Type, User, Country, StartTime, EndTime = User_Input_List
+        else:
+            Task_Type, User, Country, StartTime, EndTime, StartDay, _, EndDay = User_Input_List
+
+        StartTime, EndTime = parser.parse(StartTime), parser.parse(EndTime)
+        result = Check_Task(Country, StartTime, EndTime, StartDay)
+        print(result)
+
+        # To stop Screen
+        input()
+    except Exception:
+        print('Please make sure use space between the input...')
+
+
+if __name__ == "__main__":
+    # Take input from user...
+    user_input = input()
+    main(user_input)
