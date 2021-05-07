@@ -4,7 +4,7 @@ import pytz
 from dateutil import parser
 
 
-# Time Zone according to country...
+# Time Zone according to country....
 Country_TimeZone = {'India': 'Asia/Calcutta', 'USA': 'America/New_York', 'Aus': 'Australia/Perth'}
 
 
