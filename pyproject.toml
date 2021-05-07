@@ -1,17 +1,11 @@
-[tool.poetry]
-name = "timezone_based_task_manager"
+[tool]
+name = "Timezone_Based_task_Execution"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
+git = "https://github.com/chandanyadav6812/Timezone-based-Task-Execution"
 
-[tool.poetry.dependencies]
+[dependencies]
 python = "^3.7"
 python-dateutil = "^2.8.1"
 pytz = "^2021.1"
-
-[tool.poetry.dev-dependencies]
-pytest = "^5.2"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
